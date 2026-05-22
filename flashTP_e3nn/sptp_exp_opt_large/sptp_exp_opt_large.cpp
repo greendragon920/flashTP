@@ -391,6 +391,186 @@ void sptp_linear_bwd_bwd_v2_shared_exp(
     else assert(false);
 }
 
+void sptp_linear_triple_bwd_v2_shared_exp(
+    torch::Tensor mem_dT_dGin1, 
+    torch::Tensor mem_dT_dGin2,
+    torch::Tensor mem_dT_dGW,
+    torch::Tensor mem_dT_dGLo,
+
+    torch::Tensor mem_dL_dO,
+    torch::Tensor mem_dG_dLx,
+    torch::Tensor mem_dG_dLy,
+    torch::Tensor mem_dG_dLW,
+
+    torch::Tensor in1,
+    torch::Tensor in2,
+    torch::Tensor weight,
+    
+    torch::Tensor per_edge_src,
+    torch::Tensor per_edge_dst,
+
+    torch::Tensor mem_dT_din1,
+    torch::Tensor mem_dT_din2,
+    torch::Tensor mem_dT_dW,
+    torch::Tensor mem_dT_dLo,
+    torch::Tensor mem_dT_dgx,
+    torch::Tensor mem_dT_dgy,
+    torch::Tensor mem_dT_dgW,
+    torch::Tensor mem_debug,
+
+    torch::Tensor t_in1_idxing,
+    torch::Tensor t_in1_ival,
+    torch::Tensor t_in1_related_path_idx,
+
+    torch::Tensor t_path_array1,
+    torch::Tensor t_path_array2,
+    torch::Tensor t_per_path_fiber_start,
+    torch::Tensor t_path_weight,
+    torch::Tensor t_per_path_weight_pos,
+
+    torch::Tensor t_fiber_array,
+    torch::Tensor t_unique_cg_val,
+    torch::Tensor t_per_exec_info,
+
+    size_t path_cnt,
+    size_t per_block_batch,
+    size_t max_ir_dim
+){
+    CHECK_INPUT(mem_dT_dGin1);
+    CHECK_INPUT(mem_dT_dGin2);
+    CHECK_INPUT(mem_dT_dGW);
+    CHECK_INPUT(mem_dT_dGLo);
+
+    CHECK_INPUT(mem_dL_dO);
+    CHECK_INPUT(mem_dG_dLx);
+    CHECK_INPUT(mem_dG_dLy);
+    CHECK_INPUT(mem_dG_dLW);
+
+    CHECK_INPUT(in1);
+    CHECK_INPUT(in2);
+    CHECK_INPUT(weight);
+
+    CHECK_INPUT(per_edge_src);
+    CHECK_INPUT(per_edge_dst);
+
+    CHECK_INPUT(mem_dT_din1);
+    CHECK_INPUT(mem_dT_din2);
+    CHECK_INPUT(mem_dT_dW);
+    CHECK_INPUT(mem_dT_dLo);
+    CHECK_INPUT(mem_dT_dgx);
+    CHECK_INPUT(mem_dT_dgy);
+    CHECK_INPUT(mem_dT_dgW);
+    CHECK_INPUT(mem_debug);
+
+    CHECK_INPUT(t_in1_idxing);
+    CHECK_INPUT(t_in1_ival);
+    CHECK_INPUT(t_in1_related_path_idx);
+
+    CHECK_INPUT(t_path_array1);
+    CHECK_INPUT(t_path_array2);
+    CHECK_INPUT(t_per_path_fiber_start);
+    CHECK_INPUT(t_path_weight);
+    CHECK_INPUT(t_per_path_weight_pos);
+
+    CHECK_INPUT(t_fiber_array);
+    CHECK_INPUT(t_unique_cg_val);
+
+    if(in1.dtype() == torch::kFloat32){
+        triple_bwd_sptp_linear_cuda_v2_shared_exp(
+            mem_dT_dGin1,
+            mem_dT_dGin2,
+            mem_dT_dGW,
+            mem_dT_dGLo,
+
+            mem_dL_dO,
+            mem_dG_dLx,
+            mem_dG_dLy,
+            mem_dG_dLW,
+
+            in1,
+            in2,
+            weight,
+
+            per_edge_src,
+            per_edge_dst,
+
+            mem_dT_din1,
+            mem_dT_din2,
+            mem_dT_dW,
+            mem_dT_dLo,
+            mem_dT_dgx,
+            mem_dT_dgy,
+            mem_dT_dgW,
+            mem_debug,
+
+            t_in1_idxing,
+            t_in1_ival,
+            t_in1_related_path_idx,
+
+            t_path_array1,
+            t_path_array2,
+            t_per_path_fiber_start,
+            t_path_weight,
+            t_per_path_weight_pos,
+
+            t_fiber_array,
+            t_unique_cg_val,
+            t_per_exec_info,
+
+            path_cnt,
+            per_block_batch,
+            max_ir_dim
+        );
+    }
+    else if (in1.dtype() == torch::kFloat64){
+        triple_bwd_sptp_linear_cuda_v2_shared_exp_double(
+            mem_dT_dGin1,
+            mem_dT_dGin2,
+            mem_dT_dGW,
+            mem_dT_dGLo,
+
+            mem_dL_dO,
+            mem_dG_dLx,
+            mem_dG_dLy,
+            mem_dG_dLW,
+
+            in1,
+            in2,
+            weight,
+
+            per_edge_src,
+            per_edge_dst,
+
+            mem_dT_din1,
+            mem_dT_din2,
+            mem_dT_dW,
+            mem_dT_dLo,
+            mem_dT_dgx,
+            mem_dT_dgy,
+            mem_dT_dgW,
+            mem_debug,
+
+            t_in1_idxing,
+            t_in1_ival,
+            t_in1_related_path_idx,
+
+            t_path_array1,
+            t_path_array2,
+            t_per_path_fiber_start,
+            t_path_weight,
+            t_per_path_weight_pos,
+
+            t_fiber_array,
+            t_unique_cg_val,
+            t_per_exec_info,
+
+            path_cnt,
+            per_block_batch,
+            max_ir_dim
+        );
+    }
+    else assert(false);
+}
 
 // #ifndef FLASHTP_TORCHSCRIPT
 // PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {

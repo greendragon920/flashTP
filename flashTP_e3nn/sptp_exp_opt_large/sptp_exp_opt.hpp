@@ -130,6 +130,52 @@ void bwd_bwd_sptp_linear_cuda_v2_shared_exp(
     size_t max_ir_dim
 );
 
+void triple_bwd_sptp_linear_cuda_v2_shared_exp(
+    torch::Tensor mem_dT_dGin1, 
+    torch::Tensor mem_dT_dGin2,
+    torch::Tensor mem_dT_dGW,
+    torch::Tensor mem_dT_dGLo,
+
+    torch::Tensor mem_dL_dO,
+    torch::Tensor mem_dG_dLx,
+    torch::Tensor mem_dG_dLy,
+    torch::Tensor mem_dG_dLW,
+
+    torch::Tensor in1,
+    torch::Tensor in2,
+    torch::Tensor weight,
+    
+    torch::Tensor per_edge_src,
+    torch::Tensor per_edge_dst,
+
+    torch::Tensor mem_dT_din1,
+    torch::Tensor mem_dT_din2,
+    torch::Tensor mem_dT_dW,
+    torch::Tensor mem_dT_dLo,
+    torch::Tensor mem_dT_dgx,
+    torch::Tensor mem_dT_dgy,
+    torch::Tensor mem_dT_dgW,
+    torch::Tensor mem_debug,
+
+    torch::Tensor t_in1_idxing,
+    torch::Tensor t_in1_ival,
+    torch::Tensor t_in1_related_path_idx,
+
+    torch::Tensor t_path_array1,
+    torch::Tensor t_path_array2,
+    torch::Tensor t_per_path_fiber_start,
+    torch::Tensor t_path_weight,
+    torch::Tensor t_per_path_weight_pos,
+
+    torch::Tensor t_fiber_array,
+    torch::Tensor t_unique_cg_val,
+    torch::Tensor t_per_exec_info,
+
+    size_t path_cnt,
+    size_t per_block_batch,
+    size_t max_ir_dim
+);
+
 void fwd_sptp_linear_cuda_v2_shared_exp_double(
     torch::Tensor in1, 
     torch::Tensor in2,
@@ -231,6 +277,51 @@ void bwd_bwd_sptp_linear_cuda_v2_shared_exp_double(
     size_t max_ir_dim
 );
 
+void triple_bwd_sptp_linear_cuda_v2_shared_exp_double(
+    torch::Tensor mem_dT_dGin1, 
+    torch::Tensor mem_dT_dGin2,
+    torch::Tensor mem_dT_dGW,
+    torch::Tensor mem_dT_dGLo,
+
+    torch::Tensor mem_dL_dO,
+    torch::Tensor mem_dG_dLx,
+    torch::Tensor mem_dG_dLy,
+    torch::Tensor mem_dG_dLW,
+
+    torch::Tensor in1,
+    torch::Tensor in2,
+    torch::Tensor weight,
+    
+    torch::Tensor per_edge_src,
+    torch::Tensor per_edge_dst,
+
+    torch::Tensor mem_dT_din1,
+    torch::Tensor mem_dT_din2,
+    torch::Tensor mem_dT_dW,
+    torch::Tensor mem_dT_dLo,
+    torch::Tensor mem_dT_dgx,
+    torch::Tensor mem_dT_dgy,
+    torch::Tensor mem_dT_dgW,
+    torch::Tensor mem_debug,
+
+    torch::Tensor t_in1_idxing,
+    torch::Tensor t_in1_ival,
+    torch::Tensor t_in1_related_path_idx,
+
+    torch::Tensor t_path_array1,
+    torch::Tensor t_path_array2,
+    torch::Tensor t_per_path_fiber_start,
+    torch::Tensor t_path_weight,
+    torch::Tensor t_per_path_weight_pos,
+
+    torch::Tensor t_fiber_array,
+    torch::Tensor t_unique_cg_val,
+    torch::Tensor t_per_exec_info,
+
+    size_t path_cnt,
+    size_t per_block_batch,
+    size_t max_ir_dim
+);
 
 void sptp_linear_fwd_v2_shared_exp(    
     torch::Tensor in1, 
@@ -309,6 +400,52 @@ void sptp_linear_bwd_bwd_v2_shared_exp(
     torch::Tensor mem_dL_dW,
     torch::Tensor mem_dL_din1,
     torch::Tensor mem_dL_din2,
+    torch::Tensor mem_debug,
+
+    torch::Tensor t_in1_idxing,
+    torch::Tensor t_in1_ival,
+    torch::Tensor t_in1_related_path_idx,
+
+    torch::Tensor t_path_array1,
+    torch::Tensor t_path_array2,
+    torch::Tensor t_per_path_fiber_start,
+    torch::Tensor t_path_weight,
+    torch::Tensor t_per_path_weight_pos,
+
+    torch::Tensor t_fiber_array,
+    torch::Tensor t_unique_cg_val,
+    torch::Tensor t_per_exec_info,
+
+    size_t path_cnt,
+    size_t per_block_batch,
+    size_t max_ir_dim
+);
+
+void sptp_linear_triple_bwd_v2_shared_exp(
+    torch::Tensor mem_dT_dGin1, 
+    torch::Tensor mem_dT_dGin2,
+    torch::Tensor mem_dT_dGW,
+    torch::Tensor mem_dT_dGLo,
+
+    torch::Tensor mem_dL_dO,
+    torch::Tensor mem_dG_dLx,
+    torch::Tensor mem_dG_dLy,
+    torch::Tensor mem_dG_dLW,
+
+    torch::Tensor in1,
+    torch::Tensor in2,
+    torch::Tensor weight,
+    
+    torch::Tensor per_edge_src,
+    torch::Tensor per_edge_dst,
+
+    torch::Tensor mem_dT_din1,
+    torch::Tensor mem_dT_din2,
+    torch::Tensor mem_dT_dW,
+    torch::Tensor mem_dT_dLo,
+    torch::Tensor mem_dT_dgx,
+    torch::Tensor mem_dT_dgy,
+    torch::Tensor mem_dT_dgW,
     torch::Tensor mem_debug,
 
     torch::Tensor t_in1_idxing,

@@ -5,6 +5,8 @@ add_definitions(-DFLASHTP_TORCHSCRIPT)
 add_library(sptp_exp_opt_large SHARED
     sptp_exp_opt_large.cpp
     torch_register.cpp
+    triple_bwd_sptp_linear_v2_shared_exp.cu
+    triple_bwd_sptp_linear_v2_shared_exp_double.cu
     bwd_bwd_sptp_linear_v2_shared_exp.cu
     bwd_bwd_sptp_linear_v2_shared_exp_double.cu
     bwd_sptp_linear_shared_exp.cu

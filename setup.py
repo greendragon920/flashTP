@@ -39,9 +39,11 @@ core_kernel = CUDAExtension(
                 "flashTP_e3nn/sptp_exp_opt_large/fwd_sptp_linear_v2_shared_exp.cu",
                 "flashTP_e3nn/sptp_exp_opt_large/bwd_sptp_linear_shared_exp.cu",
                 "flashTP_e3nn/sptp_exp_opt_large/bwd_bwd_sptp_linear_v2_shared_exp.cu",
+                "flashTP_e3nn/sptp_exp_opt_large/triple_bwd_sptp_linear_v2_shared_exp.cu",
                 "flashTP_e3nn/sptp_exp_opt_large/fwd_sptp_linear_v2_shared_exp_double.cu",
                 "flashTP_e3nn/sptp_exp_opt_large/bwd_sptp_linear_shared_exp_double.cu",
                 "flashTP_e3nn/sptp_exp_opt_large/bwd_bwd_sptp_linear_v2_shared_exp_double.cu",
+                "flashTP_e3nn/sptp_exp_opt_large/triple_bwd_sptp_linear_v2_shared_exp_double.cu",
             ],
             extra_compile_args={
                 "cxx": ["-O2"],
