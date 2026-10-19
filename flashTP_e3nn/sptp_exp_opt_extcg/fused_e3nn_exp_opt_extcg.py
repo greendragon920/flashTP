@@ -7,6 +7,7 @@ import torch
 from torch.utils.cpp_extension import load
 
 import flashTP_e3nn.flashtp_extcg_kernel  as flashtp_extcg_kernel
+from flashTP_e3nn.vmap_rules import register_loop_vmap_rules
 
 # flashtp_extcg_kernel = None
 import logging
@@ -690,6 +691,14 @@ def kernel_init():
         "flashtp_extcg_kernel::sptp_linear_bwd_v2_shared_exp",
         fused_e3nn_bwd_bwd_exp,
         setup_context=fused_e3nn_setup_bwd_context_exp,
+    )
+
+    register_loop_vmap_rules(
+        (
+            "flashtp_extcg_kernel::sptp_linear_fwd_v2_shared_exp",
+            "flashtp_extcg_kernel::sptp_linear_bwd_v2_shared_exp",
+            "flashtp_extcg_kernel::sptp_linear_bwd_bwd_v2_shared_exp",
+        )
     )
 
 
